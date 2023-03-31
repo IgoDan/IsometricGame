@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bdff7cd1f6e59057bce6d25eb3428836b00f961781c4206a3e48bc78807a6c1b
-size 371
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HurtingEnv : MonoBehaviour
+{
+
+    public int damageAmount;
+
+    private void OnTriggerStay2D(Collider2D player)
+    {
+        if(player != null && player.tag == "Player")
+        {
+            player.GetComponent<CharacterStats>().ChangeHealth(-damageAmount);
+        }
+    }
+}

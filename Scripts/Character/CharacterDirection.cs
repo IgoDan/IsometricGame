@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3b6834a5290f96301e6cddfe1f828342cc0896ea9c87b4621d8e0d794c70a117
-size 882
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CharacterDirection : MonoBehaviour
+{
+    
+    public Vector2 MouseDirection()
+    {
+        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (Vector2)((worldMousePos - transform.position));
+        return direction;
+    }
+
+    public int MouseToIndex()
+    {
+        return DirectionToIndex(MouseDirection());
+    }
+
+    public int DirectionToIndex(Vector2 _direction)
+    {
+        Vector2 norDir = _direction.normalized;
+
+        float step = 360/8;
+        float offset = step/2;
+        float angle = Vector2.SignedAngle(Vector2.up, norDir);
+
+        angle += offset;
+        if (angle < 0)
+        {
+            angle += 360;
+        }
+        float stepCount = angle / step;
+        return Mathf.FloorToInt(stepCount);
+    }
+}

@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:004322ce6ce17f600b28b0d50783b08049684e58e443546c8bf0a3488b2f8c24
-size 524
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraController : MonoBehaviour
+{
+    public Transform target;
+
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
+
+
+/*    void FixedUpdate()
+    {
+        Vector3 desiredPosition = target.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed*Time.deltaTime);
+        transform.position = smoothedPosition;
+
+        transform.LookAt(target);
+    }
+*/
+}

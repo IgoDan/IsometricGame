@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f413243a62cd23944afe770048f697e24911f99db91c9b67fe8dde530315fb06
-size 402
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PickableAmmo : MonoBehaviour
+{
+    public int ammoQuantity;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Weapon weapon = other.GetComponent<Weapon>();
+
+        if(weapon != null)
+        {
+            weapon.ChangeAmmo(ammoQuantity);
+            Destroy(gameObject);
+        }
+    }
+
+
+}

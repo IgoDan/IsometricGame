@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:49e93a86d2304df7f665be7e92f971ec54a8248d1dbcd0810d2ff19e1e7869c9
-size 574
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ReloadBar : MonoBehaviour
+{
+    public Slider slider;
+    public GameObject reloadBar;
+
+    private void Start()
+    {
+        slider.maxValue = 1f;
+        slider.value = 1f;
+    }
+    public void StartReloadBar(float _reloadTime)
+    {
+        //reloadBar.alpha = 0f;
+        slider.maxValue = _reloadTime;
+        slider.value = 0;
+    }
+
+    public void UpdateReloadBar(float barChange)
+    {
+        slider.value += barChange;
+            
+    }
+
+    
+}
